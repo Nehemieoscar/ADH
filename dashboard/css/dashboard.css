@@ -1,0 +1,557 @@
+/*
+|--------------------------------------------------------------------------
+| CSS : ADMIN DASHBOARD (Design 20+ ans d'expérience)
+|--------------------------------------------------------------------------
+| Thème moderne, typographie professionnelle, micro-interactions fluides.
+*/
+
+/* Reset et variables refondus */
+:root {
+    /* Couleurs Primaires */
+    --primary-color: #5d5dff;       /* Bleu vif et moderne pour les accents */
+    --primary-dark: #4b4bdf;
+    --primary-light: #e6e6ff;
+
+    /* Couleurs de Fond (Palette Pro) */
+    --bg-primary: #f6f8fa;          /* Fond principal (très clair, gris doux) */
+    --bg-secondary: #ffffff;        /* Fond des cartes et éléments (Blanc) */
+    --bg-sidebar: #1f2937;          /* Fond de la sidebar (Dark) */
+    --bg-tertiary: #eff3f6;         /* Hover/Sélection clair */
+
+    /* Couleurs de Feedback */
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --info-color: #3b82f6;
+
+    /* Texte et Bordures */
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+    --border-color: #e5e7eb;
+
+    /* Ombres et Transitions */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* Transition professionnelle : rapide mais avec une courbe fluide */
+    --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Police professionnelle sans serif (ex: 'Inter' si importée ou une alternative système) */
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+/* Utility: visually hidden but accessible to screen readers */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ------------------------------------------- */
+/* 1. LAYOUT GÉNÉRAL & SIDEBAR */
+/* ------------------------------------------- */
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background-color: var(--bg-sidebar);
+    color: white;
+    padding: 2rem 0;
+    box-shadow: var(--shadow-lg);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+.logo span {
+    color: white;
+}
+
+.sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    color: #a0aec0; /* Texte clair pour les icônes */
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.sidebar nav a:hover {
+    color: var(--primary-color);
+    background-color: #2d3748;
+}
+
+.sidebar nav a.active {
+    color: white;
+    background-color: var(--primary-dark);
+    border-left: 5px solid var(--primary-color);
+    box-shadow: inset 5px 0 10px rgba(0, 0, 0, 0.2); /* Ombre subtile sur la bordure */
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ------------------------------------------- */
+/* 2. HEADER & SEARCH */
+/* ------------------------------------------- */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.search-box {
+    position: relative;
+    flex-grow: 1;
+    max-width: 400px;
+    margin-right: 2rem;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: var(--transition-fast);
+}
+.search-box input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-icon {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+.nav-icon:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px); /* Micro-interaction au hover */
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--error-color);
+    color: white;
+    border-radius: 50%;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.65rem;
+    line-height: 1;
+    font-weight: 700;
+    min-width: 18px;
+    text-align: center;
+    /* Micro-interaction: Scaling on new notification */
+    animation: pulseBadge 1.5s infinite;
+}
+
+@keyframes pulseBadge {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.profile-dropdown img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    transition: var(--transition-fast);
+}
+.profile-dropdown img:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* ------------------------------------------- */
+/* 3. CONTENU PRINCIPAL & CARTES */
+/* ------------------------------------------- */
+
+.content {
+    padding: 2.5rem;
+    flex-grow: 1;
+}
+
+.content-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.card {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-fast);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Stat Card - Micro-interaction de designer (Léger soulèvement) */
+.stat-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid var(--primary-color);
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
+}
+.stat-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* ------------------------------------------- */
+/* 4. SECTIONS (Transitions Douces) */
+/* ------------------------------------------- */
+/* Pour une transition douce entre les sections (géré par JS et CSS) */
+.admin-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    display: none;
+    position: relative;
+    pointer-events: none; /* Empêcher les interactions sur les sections cachées */
+}
+.admin-section.active {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+    pointer-events: auto; /* Réactiver les interactions */
+}
+
+/* ------------------------------------------- */
+/* 5. DRAG & DROP & FEEDBACK VISUEL */
+/* ------------------------------------------- */
+
+.hierarchy-list {
+    list-style: none;
+    padding: 0;
+}
+
+.draggable-item {
+    cursor: grab;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.draggable-item:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.draggable-item:active {
+    cursor: grabbing;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: rotate(1deg) scale(1.02); 
+    background-color: var(--primary-light);
+    border-color: var(--primary-color);
+}
+
+.drag-placeholder {
+    /* Ligne de feedback visuel pour l'insertion */
+    height: 40px;
+    border: 2px dashed var(--primary-color);
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    background-color: var(--primary-light);
+    transition: height 0.3s ease;
+}
+
+/* Feedback instantané (Pulse) sur bouton */
+.btn-success-feedback {
+    background-color: var(--success-color);
+    color: white;
+    animation: successPulse 0.8s ease-out forwards;
+}
+
+@keyframes successPulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+    100% { transform: scale(1); box-shadow: none; }
+}
+
+/* Badges de Statut Dynamiques */
+.status-badge {
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-badge.paid { background-color: var(--success-color); color: white; }
+.status-badge.unpaid { background-color: var(--warning-color); color: var(--text-primary); }
+.status-badge.admin { background-color: var(--primary-color); color: white; }
+.status-badge.professeur { background-color: var(--info-color); color: white; }
+.status-badge.etudiant { background-color: var(--bg-tertiary); color: var(--text-primary); }
+
+
+/* ------------------------------------------- */
+/* 6. CALENDRIER ET PLANNING (Planning Pro) */
+/* ------------------------------------------- */
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: var(--border-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.calendar-day-label {
+    background: var(--bg-tertiary);
+    text-align: center;
+    padding: 0.75rem 0;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.calendar-day {
+    min-height: 120px;
+    background: var(--bg-secondary);
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s ease;
+}
+.calendar-day:hover {
+    background-color: #fcfdff;
+}
+
+.calendar-date {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.task-item {
+    background: var(--info-color);
+    color: white;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.3rem;
+    cursor: grab;
+    font-size: 0.75rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.task-item.haute { background: var(--error-color); }
+.task-item.basse { background: var(--success-color); }
+.task-item.normale { background: var(--info-color); }
+
+.task-item:active {
+    cursor: grabbing;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+/* ------------------------------------------- */
+/* 7. RECHERCHE INTELLIGENTE & OUTILS */
+/* ------------------------------------------- */
+
+.filter-bar {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.filter-bar select, .filter-bar input {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    transition: var(--transition-fast);
+}
+
+.btn {
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-fast);
+}
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-1px); }
+.btn-secondary { background-color: var(--bg-tertiary); color: var(--text-primary); }
+.btn-secondary:hover { background-color: var(--border-color); transform: translateY(-1px); }
+
+/* Styles pour les Tooltips */
+.smart-tooltip-style {
+    position: fixed;
+    background: var(--bg-sidebar);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+/* ------------------------------------------- */
+/* Accessibility improvements (ajoutées)
+/* ------------------------------------------- */
+
+/* Focus visible and keyboard accessibility for interactive elements */
+.btn:focus,
+.btn:focus-visible,
+.nav-icon:focus,
+.nav-icon:focus-visible,
+.draggable-item:focus,
+.draggable-item:focus-visible,
+.calendar-day:focus,
+.calendar-day:focus-visible,
+input:focus,
+input:focus-visible,
+select:focus,
+select:focus-visible,
+textarea:focus,
+textarea:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Amélioration du contraste pour les textes secondaires */
+.stat-label,
+.text-secondary {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Amélioration du focus pour la navigation */
+.sidebar nav a:focus,
+.sidebar nav a:focus-visible {
+    background-color: #2d3748;
+    color: var(--primary-color);
+    outline: 2px solid var(--primary-color);
+    outline-offset: -2px;
+}
+
+/* Indicateur visuel pour les éléments interactifs */
+.btn:hover,
+.nav-icon:hover {
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
+}
+
+/* Amélioration de l'accessibilité du tableau */
+.table th {
+    font-weight: 600;
+}
+
+.table td:focus,
+.table td:focus-visible {
+    background-color: var(--primary-light);
+    outline: 2px solid var(--primary-color);
+}

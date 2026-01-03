@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Redirection vers login si non connecté
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/ADH/(login|register|config)\.php
+RewriteCond %{REQUEST_URI} !^/ADH/css/
+RewriteCond %{REQUEST_URI} !^/ADH/js/
+RewriteCond %{REQUEST_URI} !^/ADH/images/
+RewriteRule ^(.*)$ /ADH/login.php [L]

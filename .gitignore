@@ -1,0 +1,49 @@
+# Fichiers de configuration sensibles
+config/moncash-config.php
+config/stripe-config.php
+
+# Fichiers de base de données
+*.sql.bak
+*.sql.backup
+adh.sql
+
+# Fichiers temporaires PHP
+*.tmp
+*.temp
+*.log
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+
+# Dossiers de cache/session
+session/
+cache/
+uploads/
+temp/
+
+# Fichiers de développement
+.env
+.env.local
+*.swp
+*.swo
+*~
+
+# Node modules (si utilisé)
+node_modules/
+package-lock.json
+
+# Dossiers de build
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Fichiers de dépendances composer
+vendor/
+composer.lock

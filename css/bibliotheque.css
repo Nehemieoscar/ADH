@@ -1,0 +1,319 @@
+/* Styles spécifiques à la bibliothèque */
+.bibliotheque-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 968px) {
+    .bibliotheque-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sidebar des filtres */
+.filters-sidebar {
+    display: grid;
+    gap: 1.5rem;
+    align-content: start;
+}
+
+.categories-list,
+.types-list,
+.niveaux-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.category-item,
+.filters-sidebar label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.category-item:hover,
+.filters-sidebar label:hover {
+    background-color: var(--couleur-fond);
+}
+
+.category-item .count {
+    font-size: 0.8rem;
+    color: #666;
+    background: var(--couleur-fond);
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+}
+
+/* Barre de recherche */
+.search-box {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--couleur-border);
+    border-radius: 5px;
+}
+
+/* En-tête des ressources */
+.ressources-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.view-options {
+    display: flex;
+    gap: 0.5rem;
+    background: var(--couleur-fond);
+    padding: 0.25rem;
+    border-radius: 5px;
+}
+
+.view-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-btn.active {
+    background: var(--couleur-primaire);
+    color: white;
+}
+
+/* Conteneur des ressources */
+.ressources-container {
+    transition: all 0.3s;
+}
+
+.ressources-container.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.ressources-container.list-view {
+    display: grid;
+    gap: 1rem;
+}
+
+.ressources-container.list-view .ressource-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.ressources-container.list-view .ressource-content {
+    margin-bottom: 0;
+}
+
+.ressources-container.list-view .ressource-description {
+    display: block;
+}
+
+/* Cartes de ressources */
+.ressources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.ressource-card {
+    background: var(--couleur-blanc);
+    border: 1px solid var(--couleur-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.ressource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--ombre-moyenne);
+    border-color: var(--couleur-primaire);
+}
+
+.ressource-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.ressource-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.ressource-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.ressource-content {
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+.ressource-content h3 {
+    margin: 0 0 0.75rem 0;
+    color: var(--couleur-primaire);
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+.ressource-description {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ressource-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.ressource-meta .categorie {
+    background: var(--couleur-fond);
+    color: #666;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+.ressource-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.ressource-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ressource-actions .btn {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Modal de consultation */
+.large-modal {
+    max-width: 900px;
+}
+
+#ressource-content {
+    min-height: 500px;
+}
+
+/* Lecteur PDF intégré */
+.pdf-viewer {
+    width: 100%;
+    height: 600px;
+    border: 1px solid var(--couleur-border);
+    border-radius: 5px;
+}
+
+/* Vidéo intégrée */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Audio player */
+.audio-player {
+    width: 100%;
+    padding: 2rem;
+    background: var(--couleur-fond);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.audio-player audio {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+/* Présentation */
+.presentation-viewer {
+    width: 100%;
+    height: 500px;
+    border: 1px solid var(--couleur-border);
+    border-radius: 5px;
+}
+
+/* Mode sombre */
+[data-theme="sombre"] .ressource-card {
+    background: #2d2d2d;
+    border-color: #444;
+}
+
+[data-theme="sombre"] .ressource-meta .categorie {
+    background: #3d3d3d;
+}
+
+[data-theme="sombre"] .audio-player {
+    background: #3d3d3d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ressources-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .ressources-container.grid-view {
+        grid-template-columns: 1fr;
+    }
+    
+    .ressources-container.list-view .ressource-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .ressource-actions {
+        flex-direction: column;
+    }
+    
+    .search-box {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
