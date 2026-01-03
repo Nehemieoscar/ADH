@@ -1,0 +1,400 @@
+/* Styles spécifiques au coworking */
+.coworking-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.coworking-header h1 {
+    color: var(--couleur-primaire);
+    margin-bottom: 0.5rem;
+}
+
+.coworking-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.coworking-section {
+    margin-bottom: 3rem;
+}
+
+.coworking-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--couleur-primaire);
+}
+
+/* Grille des projets */
+.projets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .projets-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Cartes de projet */
+.projet-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.projet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--ombre-moyenne);
+}
+
+.projet-header {
+    display: flex;
+    justify-content: between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.projet-header h3 {
+    margin: 0;
+    flex: 1;
+    color: var(--couleur-primaire);
+}
+
+.projet-statut {
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.projet-description {
+    flex: 1;
+    margin-bottom: 1.5rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.projet-meta {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--couleur-border);
+}
+
+.projet-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.projet-date {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.projet-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Page de projet détaillée */
+.projet-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (max-width: 968px) {
+    .projet-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.projet-sidebar {
+    display: grid;
+    gap: 1.5rem;
+    position: sticky;
+    top: 100px;
+}
+
+/* Membres du projet */
+.membres-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.membre-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--couleur-border);
+    border-radius: 8px;
+}
+
+.membre-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.membre-info {
+    flex: 1;
+}
+
+.membre-nom {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.membre-role {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Chat de projet */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    border: 1px solid var(--couleur-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background: var(--couleur-fond);
+}
+
+.chat-message {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid var(--couleur-border);
+}
+
+.chat-message.own {
+    background: var(--couleur-primaire);
+    color: white;
+    margin-left: 2rem;
+}
+
+.chat-message.other {
+    background: white;
+    margin-right: 2rem;
+}
+
+.message-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.message-auteur {
+    font-weight: 600;
+}
+
+.message-date {
+    color: #666;
+}
+
+.chat-message.own .message-date {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.message-content {
+    line-height: 1.4;
+}
+
+.chat-input {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: white;
+    border-top: 1px solid var(--couleur-border);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--couleur-border);
+    border-radius: 5px;
+}
+
+/* Tâches du projet */
+.taches-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.tache-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--couleur-border);
+    border-radius: 8px;
+    background: white;
+}
+
+.tache-checkbox {
+    flex-shrink: 0;
+}
+
+.tache-content {
+    flex: 1;
+}
+
+.tache-titre {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.tache-description {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.tache-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.tache-terminee .tache-titre {
+    text-decoration: line-through;
+    color: #666;
+}
+
+/* Fichiers du projet */
+.fichiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.fichier-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--couleur-border);
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.fichier-card:hover {
+    background-color: var(--couleur-fond);
+}
+
+.fichier-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.fichier-nom {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    word-break: break-word;
+}
+
+.fichier-info {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Fonctionnalités */
+.coworking-features {
+    margin-top: 4rem;
+}
+
+.feature-card {
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Statistiques du projet */
+.projet-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: var(--couleur-fond);
+    border-radius: 8px;
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--couleur-primaire);
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .projet-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .projet-statut {
+        margin-left: 0;
+        align-self: flex-start;
+    }
+    
+    .projet-meta {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .projet-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .fichiers-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .projet-stats {
+        grid-template-columns: 1fr;
+    }
+}
